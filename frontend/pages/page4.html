@@ -1,0 +1,51 @@
+<!-- page4.html -->
+<form id="form">
+    <h2>Page 4: Professional Links and Documents</h2>
+
+    <div class="form-group">
+        <label for="photographUpload">Photograph *</label>
+        <input type="file" class="form-control-file" id="photographUpload" name="photographUpload" accept="image/*" required>
+        <small class="form-text text-muted">Upload a recent passport-sized photograph.</small>
+        <img src="5.jpg" alt="Sample Photograph" style="max-width: 100%; height: auto;">
+    </div>
+
+    <div class="form-group">
+        <label for="workLink">Work Link/Portfolio (LinkedIn) *</label>
+        <input type="url" class="form-control" id="workLink" name="workLink" required>
+        <small class="form-text text-muted">Provide a link to your LinkedIn profile or online portfolio.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="resumeUpload">Please attach your updated Resume/CV *</label>
+        <input type="file" class="form-control-file" id="resumeUpload" name="resumeUpload" accept=".pdf" required>
+        <small class="form-text text-muted">Upload your resume and portfolio.</small>
+        <p>Attached PDF: <a href="Bhagya_Resume_2024.pdf" target="_blank">Bhagya_Resume_2024.pdf</a></p>
+    </div>
+
+    <div class="form-group">
+        <label for="socialMediaLinks">Please share the links of your Social Media Profiles *</label>
+        <textarea class="form-control" id="socialMediaLinks" name="socialMediaLinks" rows="3" required></textarea>
+        <small class="form-text text-muted">Provide links to your social media profiles.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="onlinePortfolio">Please share the link of your Online Portfolio or Website</label>
+        <input type="url" class="form-control" id="onlinePortfolio" name="onlinePortfolio">
+        <small class="form-text text-muted">Provide the link to your online portfolio or personal website. If none, please mention NA.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="skills">Skills *</label>
+        <textarea class="form-control" id="skills" name="skills" rows="3" required></textarea>
+        <small class="form-text text-muted">List down all the skills you possess, separated by commas.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="languages">Languages *</label>
+        <textarea class="form-control" id="languages" name="languages" rows="3" required></textarea>
+        <small class="form-text text-muted">List the languages you are proficient in, separated by commas.</small>
+    </div>
+
+    <button type="button" id="back" class="btn btn-secondary">Back</button>
+    <button type="submit" id="next" class="btn btn-primary">Next</button>
+</form>

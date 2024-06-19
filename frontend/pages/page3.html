@@ -1,0 +1,77 @@
+<!-- page3.html -->
+<form id="form">
+    <h2>Page 3: Identification Documents</h2>
+    
+    <div class="form-group">
+        <label>Do you have a passport? *</label>
+        <div>
+            <label><input type="radio" name="hasPassport" value="yes" required> Yes</label>
+            <label><input type="radio" name="hasPassport" value="no" required> No</label>
+        </div>
+    </div>
+
+    <div id="passportDetails" style="display: none;">
+        <div class="form-group">
+            <label for="passportNumber">Passport Number</label>
+            <input type="text" class="form-control" id="passportNumber" name="passportNumber">
+            <small class="form-text text-muted">Enter your passport number.</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="passportUpload">Upload your Passport Copy</label>
+            <input type="file" class="form-control-file" id="passportUpload" name="passportUpload">
+            <small class="form-text text-muted">Upload a copy of your passport.</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="aadhaarNumber">Aadhaar Card Number *</label>
+        <input type="text" class="form-control" id="aadhaarNumber" name="aadhaarNumber" required>
+        <small class="form-text text-muted">Enter your Aadhaar card number.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="aadhaarUpload">Upload your Aadhaar Card Copy</label>
+        <input type="file" class="form-control-file" id="aadhaarUpload" name="aadhaarUpload">
+        <small class="form-text text-muted">Upload a copy of your Aadhaar card.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="panNumber">PAN Card Number *</label>
+        <input type="text" class="form-control" id="panNumber" name="panNumber" required>
+        <small class="form-text text-muted">Enter your PAN card number.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="panUpload">Upload your PAN Card Copy</label>
+        <input type="file" class="form-control-file" id="panUpload" name="panUpload">
+        <small class="form-text text-muted">Upload a copy of your PAN card.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="drivingLicenseNumber">Driving License Details (if applicable)</label>
+        <input type="text" class="form-control" id="drivingLicenseNumber" name="drivingLicenseNumber">
+        <small class="form-text text-muted">Enter your driving license number if applicable.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="drivingLicenseUpload">Upload your Driving License Copy</label>
+        <input type="file" class="form-control-file" id="drivingLicenseUpload" name="drivingLicenseUpload">
+        <small class="form-text text-muted">Upload a copy of your driving license.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="voterIdNumber">Voter ID Card Details (if applicable)</label>
+        <input type="text" class="form-control" id="voterIdNumber" name="voterIdNumber">
+        <small class="form-text text-muted">Enter your Voter ID card number if applicable.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="voterIdUpload">Upload your Voter ID Card Copy</label>
+        <input type="file" class="form-control-file" id="voterIdUpload" name="voterIdUpload">
+        <small class="form-text text-muted">Upload a copy of your Voter ID card.</small>
+    </div>
+
+    <button type="button" id="back" class="btn btn-secondary">Back</button>
+    <button type="submit" id="next" class="btn btn-primary">Next</button>
+</form>
