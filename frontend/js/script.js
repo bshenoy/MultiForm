@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
         'pages/page1.html',
         'pages/page2.html',
         'pages/page3.html',
-         'pages/page3.html',
-        // Add paths for all pages up to page10.html
+        'pages/page4.html',
+        'pages/page5.html',
+        'pages/page6.html'
+        // Add paths for all pages up to page10.html if needed
     ];
 
     function generateUserId() {
@@ -20,28 +22,48 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.text())
             .then(html => {
                 document.getElementById('form-container').innerHTML = html;
-                // Attach event listeners after rendering page content
+                attachValidationHandlers();
                 document.getElementById('next').addEventListener('click', nextPage);
                 document.getElementById('back').addEventListener('click', previousPage);
-                // Optional: add form submit listener if needed
-                document.getElementById('form').addEventListener('submit', saveData);
-                retrieveData(); // Optional: retrieve saved data for current page
+                if (pageIndex === 0) {
+                    // Only for Page 1: Initialize form with retrieved data (if any)
+                    retrieveData();
+                }
             })
             .catch(error => console.error('Error loading page:', error));
     }
 
     function nextPage() {
-        if (validateForm()) {
+        const form = document.querySelector('form');
+        if (validateForm(form) && form.checkValidity()) {
+            saveData(form);
+        } else {
+            alert('Please fill all mandatory fields.');
+        }
+    }
+
+    function saveData(form) {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        fetch('/api/form/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId, data })
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log(result.message); // Log success message
             currentPage++;
             if (currentPage < pages.length) {
                 loadPage(currentPage);
             } else {
-                alert('Form completed!'); // Optionally handle form completion
-                // Redirect or handle form completion as needed
+                alert('Form completed!');
+                // Optionally handle form completion
             }
-        } else {
-            alert('Please fill all mandatory fields.');
-        }
+        })
+        .catch(error => {
+            console.error('Error saving data:', error);
+        });
     }
 
     function previousPage() {
@@ -51,8 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function validateForm() {
-        const inputs = document.querySelectorAll('#form [required]');
+    function validateForm(form) {
+        const inputs = form.querySelectorAll('[required]');
         for (let input of inputs) {
             if (!input.value.trim()) {
                 return false;
@@ -61,40 +83,39 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
-    // Optional: Save form data to backend
-    async function saveData(event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
-        try {
-            const response = await fetch('/api/form/save', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userId, data })
+    function attachValidationHandlers() {
+        const form = document.querySelector('form');
+        if (form) {
+            const inputs = form.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    const allValid = Array.from(inputs).every(input => input.checkValidity());
+                    document.getElementById('next').disabled = !allValid;
+                });
             });
-            const result = await response.json();
-            console.log(result.message);
-        } catch (error) {
-            console.error('Error saving data:', error);
+
+            document.getElementById('next').disabled = !Array.from(inputs).every(input => input.checkValidity());
         }
     }
 
-    // Optional: Retrieve saved data from backend
-    async function retrieveData() {
-        try {
-            const response = await fetch(`/api/form/retrieve/${userId}`);
-            const result = await response.json();
-            if (result.data) {
-                const form = document.getElementById('form');
-                for (const key in result.data) {
-                    if (form[key]) {
-                        form[key].value = result.data[key];
+    function retrieveData() {
+        fetch(`/api/form/retrieve/${userId}`)
+            .then(response => response.json())
+            .then(result => {
+                if (result.data) {
+                    const form = document.querySelector('form');
+                    for (const key in result.data) {
+                        if (form[key]) {
+                            form[key].value = result.data[key];
+                        }
                     }
                 }
-            }
-        } catch (error) {
-            console.error('Error retrieving data:', error);
-        }
+                // Re-enable next button after retrieving data
+                document.getElementById('next').disabled = false;
+            })
+            .catch(error => {
+                console.error('Error retrieving data:', error);
+            });
     }
 
     loadPage(currentPage); // Start by loading the initial page

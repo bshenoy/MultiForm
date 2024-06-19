@@ -1,0 +1,79 @@
+
+<form id="form5" data-next-page="page6.html" data-prev-page="page4.html">
+    <h2>Education Details</h2>
+    <div class="form-group">
+        <label for="course">Education: Course *</label>
+        <input type="text" class="form-control" id="course" name="course" required>
+        <small class="form-text text-muted">Enter the course you have completed.</small>
+    </div>
+    <div class="form-group">
+        <label for="specialization">Education: Specialization *</label>
+        <input type="text" class="form-control" id="specialization" name="specialization" required>
+        <small class="form-text text-muted">Enter your area of specialization.</small>
+    </div>
+    <div class="form-group">
+        <label for="institution">Education: Institution *</label>
+        <input type="text" class="form-control" id="institution" name="institution" required>
+        <small class="form-text text-muted">Enter the name of the institution where you completed your course.</small>
+    </div>
+    <div class="form-group">
+        <label for="completionYear">Education: Year of Completion *</label>
+        <input type="date" class="form-control" id="completionYear" name="completionYear" required>
+        <small class="form-text text-muted">Enter the date you completed your course.</small>
+    </div>
+    <div class="form-group">
+        <label for="passPercentage">Education: Pass Percentage *</label>
+        <input type="text" class="form-control" id="passPercentage" name="passPercentage" required>
+        <small class="form-text text-muted">Enter the percentage you achieved in your course. Format: 85.6%.</small>
+    </div>
+    <div class="form-group">
+        <label for="educationProof">Upload Proof of Education Completion *</label>
+        <input type="file" class="form-control" id="educationProof" name="educationProof" required>
+        <small class="form-text text-muted">Please upload your Consolidated MarkSheet or Semester Marksheet, Provisional Degree Certificate, Degree Completion Certificate.</small>
+    </div>
+    <div class="form-group">
+        <label for="certifications">Any Certifications? *</label>
+        <div>
+            <input type="radio" id="certificationsYes" name="certifications" value="yes" required>
+            <label for="certificationsYes">YES</label>
+            <input type="radio" id="certificationsNo" name="certifications" value="no">
+            <label for="certificationsNo">NO</label>
+        </div>
+        <small class="form-text text-muted">Select 'Yes' if you have any certifications, otherwise select 'No'.</small>
+    </div>
+    <div class="form-group">
+        <label for="certificationsList">Certifications Obtained *</label>
+        <textarea class="form-control" id="certificationsList" name="certificationsList" required></textarea>
+        <small class="form-text text-muted">List the certifications you have obtained.</small>
+    </div>
+    <div class="form-group">
+        <label for="certificationAuthority">Name of Certification Issuing Authority *</label>
+        <input type="text" class="form-control" id="certificationAuthority" name="certificationAuthority" required>
+        <small class="form-text text-muted">Enter the name of the authority that issued the certification.</small>
+    </div>
+    <div class="form-group">
+        <label for="certificationDate">Certification Completion Date *</label>
+        <input type="date" class="form-control" id="certificationDate" name="certificationDate" required>
+        <small class="form-text text-muted">Select the date when the certification was issued.</small>
+    </div>
+    <div class="form-group">
+        <label for="certificationProof">Upload Proof of Certification *</label>
+        <input type="file" class="form-control" id="certificationProof" name="certificationProof" required>
+        <small class="form-text text-muted">Upload the proof of your certification.</small>
+    </div>
+    <div class="form-group">
+        <label for="tentativeJoinDate">Please Enter a Tentative Date you are expected to join us in case you are shortlisted/selected *</label>
+        <input type="date" class="form-control" id="tentativeJoinDate" name="tentativeJoinDate" required>
+    </div>
+    <div class="form-group">
+        <label for="fresher">Are you a Fresher? *</label>
+        <div>
+            <input type="radio" id="fresherYes" name="fresher" value="yes" required>
+            <label for="fresherYes">YES</label>
+            <input type="radio" id="fresherNo" name="fresher" value="no">
+            <label for="fresherNo">NO</label>
+        </div>
+    </div>
+    <button type="button" id="back" class="btn btn-secondary">Back</button>
+    <button type="button" id="next" class="btn btn-primary">Next</button>
+</form>
